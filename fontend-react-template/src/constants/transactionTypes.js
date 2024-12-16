@@ -1,0 +1,10 @@
+export const TRANSACTION_TYPES = {
+  CREDIT: 'CREDIT',
+  DEBIT: 'DEBIT'
+};
+
+export const TRANSACTION_STATUS = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+};

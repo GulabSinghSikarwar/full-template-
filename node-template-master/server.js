@@ -6,7 +6,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const DB_NAME = process.env.DB_NAME || 'financeApp';
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/';
+const MONGO_URI = process.env.MONGO_HOST || 'mongodb://localhost:27017/';
 
 
 mongoose

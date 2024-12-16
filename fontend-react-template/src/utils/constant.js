@@ -1,0 +1,1 @@
+const baseUrls = 'http://localhost:3000/'

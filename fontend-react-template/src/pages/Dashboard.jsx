@@ -5,13 +5,11 @@ import { TransactionList } from '../components/transactions/TransactionList';
 import { TransactionForm } from '../components/transactions/TransactionForm';
 import { useTransactions } from '../hooks/useTransactions';
 import { api } from '../services/api';
-import type { Transaction } from '../types/transaction';
-import type { Account } from '../types/user';
 
 export const Dashboard = () => {
-  const [account, setAccount] = useState<Account | null>(null);
+  const [account, setAccount] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
+  const [editingTransaction, setEditingTransaction] = useState(null);
   
   const {
     transactions,
@@ -36,7 +34,7 @@ export const Dashboard = () => {
     loadData();
   }, [fetchTransactions]);
 
-  const handleCreateTransaction = async (data: Omit<Transaction, 'id' | 'timestamp'>) => {
+  const handleCreateTransaction = async (data) => {
     try {
       await createTransaction(data);
       setIsFormOpen(false);
@@ -45,7 +43,7 @@ export const Dashboard = () => {
     }
   };
 
-  const handleUpdateTransaction = async (data: Omit<Transaction, 'id' | 'timestamp'>) => {
+  const handleUpdateTransaction = async (data) => {
     if (!editingTransaction) return;
     try {
       await updateTransaction(editingTransaction.id, data);
@@ -55,7 +53,7 @@ export const Dashboard = () => {
     }
   };
 
-  const handleDeleteTransaction = async (id: string) => {
+  const handleDeleteTransaction = async (id) => {
     if (window.confirm('Are you sure you want to delete this transaction?')) {
       try {
         await deleteTransaction(id);
@@ -102,7 +100,6 @@ export const Dashboard = () => {
           </div>
         </div>
 
-        {/* Transaction Form Modal */}
         {(isFormOpen || editingTransaction) && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
             <div className="bg-white rounded-lg p-6 max-w-md w-full">
@@ -110,7 +107,7 @@ export const Dashboard = () => {
                 {editingTransaction ? 'Edit Transaction' : 'New Transaction'}
               </h2>
               <TransactionForm
-                initialData={editingTransaction || undefined}
+                initialData={editingTransaction}
                 onSubmit={editingTransaction ? handleUpdateTransaction : handleCreateTransaction}
                 onCancel={() => {
                   setIsFormOpen(false);
