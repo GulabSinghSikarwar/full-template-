@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "202ef648-6cf4-47d5-b6eb-a54eedafcbab",
+		"_postman_id": "9886a7c7-baec-44d2-ac65-3bb13f8de029",
 		"name": "API Endpoints Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37345252"
 	},
 	"item": [
 		{
@@ -196,16 +197,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"accountNumber\": \"9876543210\",\n  \"type\": \"credit\",\n  \"amount\": 500,\n  \"description\": \"Salary deposit\"\n}"
+							"raw": "{\n  \"accountNumber\": \"9876543210\",\n  \"type\": \"credit\",\n  \"amount\": 950,\n  \"description\": \"Test Del transactions\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/transactions",
+							"raw": "localhost:3000/transactions/",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"transactions"
+								"transactions",
+								""
 							]
 						}
 					},
@@ -217,20 +219,61 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/transactions/:accountNumber",
+							"raw": "localhost:3000/transactions/",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"transactions",
-								":accountNumber"
-							],
-							"variable": [
-								{
-									"key": "accountNumber",
-									"value": "9876543210"
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTransactions",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Updated deposit 750 \"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transactions/676002f1072cefb0f9158629",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactions",
+								"676002f1072cefb0f9158629"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTransAction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transactions/67600369072cefb0f915862c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactions",
+								"67600369072cefb0f915862c"
 							]
 						}
 					},
